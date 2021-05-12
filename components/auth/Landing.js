@@ -4,9 +4,7 @@ import { View, Button, Text } from 'react-native'
 
 
 
-const stack = createStackNavigation();
-
-export default function Landing() {
+export default function Landing({navigation}) {
     return (
         <View style = {{flex :1, justifyContent: 'center'}}>
             <Button 
@@ -15,7 +13,7 @@ export default function Landing() {
             />
             <Button 
             title = "login"
-            onPress = {() => navigation.navigate("login")}
+            onPress = {() => navigation.navigate("Login")}
             />
         </View>
     )
