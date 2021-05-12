@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { container} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {Component} from 'react';
+import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import firebase from 'firebase/app'
@@ -27,14 +27,62 @@ import LoginScreen from './components/auth/Login'
 
 const stack = createStackNavigator();
 
-export default function App() {
-  return (
-    <NavigationContainer>
-      <stack.Navigator initialRouteName = "Landing">
-        <stack.Screen name = "landing" component = {LandingScreen} options = {{headerShown: false}}/>
-        <stack.Screen name = "Register" component = {RegisterScreen} />
-        <stack.Screen name = "Login" component = {LoginScreen} />
-      </stack.Navigator>
-    </NavigationContainer>
-  );
+export class App extends Component {
+
+  constructor(props){
+    super(props) 
+    this.state = {
+      loaded : false,
+    }
+  }
+  componentDidMount(){
+    firebase.auth().onAuthStateChanged((user)=>{
+      if(!user){
+        this.setState({
+          loggedin: false,
+          loaded: true
+        })
+      }
+      else{
+        this.setState({
+          loggedin : true,
+          loaded: true
+        })
+      }
+    })
+  }
+  render() {
+    const {loaded, loggedin} = this.state;
+    if(!loaded){
+      return(
+        <View style={{flex:1, justifyContent:'center'}}>
+          <Text>
+            loading.........
+          </Text>
+        </View>
+      )
+    }
+    if(!loggedin){
+      return (
+        <NavigationContainer>
+          <stack.Navigator initialRouteName = "Landing">
+            <stack.Screen name = "landing" component = {LandingScreen} options = {{headerShown: false}}/>
+            <stack.Screen name = "Register" component = {RegisterScreen} />
+            <stack.Screen name = "Login" component = {LoginScreen} />
+          </stack.Navigator>
+        </NavigationContainer>
+      )
+    }
+    return(
+      <View style={{flex:1, justifyContent:'center'}}>
+        <Text>
+          logged in...........
+        </Text>
+    </View>
+    )
+    
+  }
 }
+
+export default App
+
