@@ -33,6 +33,9 @@ export class Login extends Component {
                 placeholder = "password"
                 secureTextEntry = {true}
                 onChangeText = {(password) => this.setState({password})}/>
+                <Button 
+                title = "Login"
+                onPress = {() => this.onSignin()}/>
             </View>
         )
     }
