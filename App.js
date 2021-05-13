@@ -4,6 +4,7 @@ import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import firebase from 'firebase/app'
+import {Provider} from 'react-redux'
 
 const firebaseConfig = {
   apiKey: "AIzaSyC3Kqi8Afv1gvxXSeJlDFmhHi3TAIHEhx0",
