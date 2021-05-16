@@ -1,18 +1,18 @@
 import firebase from 'firebase'
 import {USER_STATE_CHANGE} from '../constant/index'
 
-export function fetchUsers(){
+export function fetchUser(){
     return((dispach) => {
         firebase.firestore()
-        .collection("user")
+        .collection("users")
         .doc(firebase.auth().currentUser.uid)
         .get()
-        .then((Snapshot)=>{
-            if (Snapshot.exists) {
-                dispach({type:USER_STATE_CHANGE, currentUser:Snapshot.data()})
+        .then((snapshot)=>{
+            if (snapshot.exists) {
+                dispatch({type:USER_STATE_CHANGE, currentUser:snapshot.data()})
             }
             else{
-                comsole.log("does not exist")
+                console.log("does not exist")
             }
         })
     })
