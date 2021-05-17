@@ -1,25 +1,34 @@
 import React, { Component } from 'react'
 import {View, Text} from 'react-native'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {MaterialCommunityIcons} from 'react-native-vector-icons'
 
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import {fetchUser} from '../redux/action/index'
+
+import FeedScreen from './main/Feed'
+
+const Tab = createBottomTabNavigator();
 
 export class main extends Component {
     componentDidMount(){
         this.props.fetchUser();
     }
     render() {
-        const {currentUser} = this.props;
-        if (currentUser==undefined) {
-            return(
-                <View></View>
-            )
-        }
-        else{
-            console.log("undefined")
-        }
-        console.log(currentUser)
+        return(
+            <Tab.Navigator>
+                <Tab.Screen 
+                    name="Home" 
+                    component={FeedScreen}
+                    options={{
+                        tabBarIcon:({ color, size }) => (
+                            <MaterialCommunityIcons name="home" color={color} size={26}/>
+                        )
+                    }} />
+                
+            </Tab.Navigator>
+        )
     }
 }
 
