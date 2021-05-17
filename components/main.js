@@ -8,11 +8,15 @@ import {bindActionCreators} from 'redux'
 import {fetchUser} from '../redux/action/index'
 
 import FeedScreen from './main/Feed'
-import cameraScreen from './main/camera'
 import chatScreen from './main/chat'
 import profileScreen from './main/profile'
 
+
 const Tab = createBottomTabNavigator();
+
+const EmptyScreen = () => {
+    return(null)
+}
 
 export class main extends Component {
     componentDidMount(){
@@ -20,7 +24,7 @@ export class main extends Component {
     }
     render() {
         return(
-            <Tab.Navigator>
+            <Tab.Navigator initialRouteName = "Feed"> 
                 <Tab.Screen 
                     name="Home" 
                     component={FeedScreen}
@@ -29,7 +33,13 @@ export class main extends Component {
                             <MaterialCommunityIcons name="home" color={color} size={28}/>
                         ) 
                     }}/>
-                <Tab.Screen name="Camera" component={cameraScreen} 
+                <Tab.Screen name="images" component={EmptyScreen} 
+                listeners = {({ navigation })=>({
+                    tabPress: event => {
+                        event.preventDefault();
+                        navigation.navigate("camera")
+                    }
+                })}
                 options={{
                     tabBarIcon:({ color, size }) => (
                         <MaterialCommunityIcons name="camera" color={color} size={28}/>
