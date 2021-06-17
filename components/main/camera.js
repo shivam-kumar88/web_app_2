@@ -4,7 +4,7 @@ import { Camera } from 'expo-camera';
 import * as ImagePicker from 'expo-image-picker';
 
 
-export default function App() {
+export default function camera({navigation}) {
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
   const [hasGalleryPermission, setHasGalleryPermission] = useState(null);
   const [camera, setCamera] = useState(null);
@@ -75,6 +75,7 @@ export default function App() {
         <Button 
           title = "take picture"
           onPress = {()=> takePicture()}/>
+        <Button title="save" onPress ={() => navigation.navigate('save', {image})}/>
         <Button 
           title = "gallery"
           onPress = {()=> pickImage()}/>

@@ -31,6 +31,7 @@ import LoginScreen from './components/auth/Login'
 import RightScreen from './components/auth/Register'
 import mainScreen from './components/main'
 import cameraScreen from './components/main/camera'
+import saveScreen from './components/main/save'
 
 const store = createStore(rootReducers, applyMiddleware(thunk))
 
@@ -87,7 +88,8 @@ export class App extends Component {
         <NavigationContainer>
         <stack.Navigator initialRouteName = "main">
           <stack.Screen name = "main" component = {mainScreen} options = {{headerShown: false}}/>
-          <stack.Screen name = "camera" component = {cameraScreen}/>
+          <stack.Screen name = "camera" component = {cameraScreen} navigation = {this.props.navigation}/>
+          <stack.Screen name = "save" component = {saveScreen}/>
         </stack.Navigator>
         </NavigationContainer>
       </Provider>
