@@ -54,7 +54,7 @@ export default function save(props, { navigation }) {
                 creation:firebase.firestore.FieldValue.serverTimestamp()
             })
             .then((function(){
-                navigation.popToTop()
+                props.navigation.popToTop()
             }))
     }
 

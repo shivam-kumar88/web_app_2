@@ -89,7 +89,7 @@ export class App extends Component {
         <stack.Navigator initialRouteName = "main">
           <stack.Screen name = "main" component = {mainScreen} options = {{headerShown: false}}/>
           <stack.Screen name = "camera" component = {cameraScreen} navigation = {this.props.navigation}/>
-          <stack.Screen name = "save" component = {saveScreen}/>
+          <stack.Screen name = "save" component = {saveScreen} navigation = {this.props.navigation}/>
         </stack.Navigator>
         </NavigationContainer>
       </Provider>
