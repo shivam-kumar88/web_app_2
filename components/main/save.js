@@ -4,7 +4,7 @@ import firebase from 'firebase'
 require("firebase/firestore")
 require("firebase/firebase-storage")
 
-export default function save(props) {
+export default function save(props, { navigation }) {
     console.log(props.route.params.image)
 
     const[caption, setCaption] = useState(" ")
@@ -30,6 +30,7 @@ export default function save(props) {
 
         const taskCompleted = () => {
             task.snapshot.ref.getDownloadURL().then((snapshot)=>{
+                savePostData(snapshot);
                 console.log(snapshot)
             })
         }
@@ -41,6 +42,23 @@ export default function save(props) {
         task.on("state_Changed", taskProgress, taskError, taskCompleted);
 
     }
+
+    const savePostData = (downloadURL) => {
+        firebase.firestore()
+            .collection("posts")
+            .doc(firebase.auth().currentUser.uid)
+            .collection("userPost")
+            .add({
+                downloadURL,
+                caption,
+                creation:firebase.firestore.FieldValue.serverTimestamp()
+            })
+            .then((function(){
+                navigation.popToTop()
+            }))
+    }
+
+
     return (
         <View style = {{flex:1}}>
             <Image source = {{uri:props.route.params.image}}/>
