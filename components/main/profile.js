@@ -5,7 +5,7 @@ export default function profile() {
     return (
         <View style={{flex:1, justifyContent:'center'}}>
             <Text>
-                you can chat here.....
+                this is your profile page.....
             </Text>
         </View>
     )
