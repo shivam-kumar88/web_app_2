@@ -1,9 +1,25 @@
+import { USER_POSTS_STATE_CHANGE, USER_STATE_CHANGE } from "../constant"
+
 const initialState = {
-    currentUser : null}
+    currentUser : null,
+    post:[]
+}
 
 export const user = (state = initialState, action) => {
-    return{
-        ...state,
-        currentUser: action.currentUser
+    switch(action.type){
+        case USER_STATE_CHANGE:
+            return{
+                ...state,
+                currentUser: action.currentUser
+            }
+        case USER_POSTS_STATE_CHANGE:
+            return{
+                ...state,
+                posts: action.posts
+            }
+        default:
+            return state;
+
     }
+    
 }

@@ -17,3 +17,18 @@ export function fetchUser(){
         })
     })
 }
+
+export function fetchUserpost(){
+    return((dispach) => {
+        firebase.firestore()
+        .collection("posts")
+        .doc(firebase.auth().currentUser.uid)
+        .collection("userposts")
+        .orderBy("creation", "asc")
+        .get()
+        .then((snapshot)=>{
+            console.log(snapshot.docs)
+            }
+        )
+    })
+}
