@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, Button, TextInput } from 'react-native'
+import { View, Text, Button, TextInput, TouchableOpacity, StyleSheet} from 'react-native'
 import firebase from 'firebase'
 
 export class Register extends Component {
@@ -31,23 +31,56 @@ export class Register extends Component {
     }
     render() {
         return (
-            <View>
+            <View style = {styles.container}>
                 <TextInput
+                style = {styles.input}
                 placeholder = "name"
                 onChangeText = {(name) => this.setState({name})}/>
                 <TextInput
+                style = {styles.input}
                 placeholder = "email"
                 onChangeText = {(email) => this.setState({email})}/>
                 <TextInput
+                style = {styles.input}
                 placeholder = "password"
                 secureTextEntry = {true}
                 onChangeText = {(password) => this.setState({password})}/>
-                <Button 
-                title = "register"
-                onPress = {() => this.onSignUp()}/>
+                <TouchableOpacity style={styles.buttonContainer1} onPress = {() => this.onSignUp()}>
+                    <Text>Register</Text>
+                </TouchableOpacity>
             </View>
         )
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 30,
+    },
+    input: {
+        height: 50,
+        width: '100%',
+        borderWidth: 1,
+        padding: 15,
+        marginBottom: 20,
+        borderColor: 'gray',
+    },
+    buttonContainer1: {
+        marginTop:10,
+        height:45,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom:20,
+        width:250,
+        borderRadius:30,
+        backgroundColor: "#48d1cc",
+    },
+    
+})
 
 export default Register

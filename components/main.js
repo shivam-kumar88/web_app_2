@@ -26,7 +26,7 @@ export class main extends Component {
     }
     render() {
         return(
-            <Tab.Navigator initialRouteName = "Feed" labeled = {false} barStyle={{ backgroundColor: 'lightblue' }}> 
+            <Tab.Navigator initialRouteName = "Feed" labeled = {false} barStyle={{ backgroundColor: 'gray' }}> 
                 <Tab.Screen 
                     name="Home" 
                     component={FeedScreen}

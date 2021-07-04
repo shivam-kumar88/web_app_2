@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {Component} from 'react';
-import { Text, View, } from 'react-native';
+import { Text, View, YellowBox, } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import firebase from 'firebase/app'
@@ -24,6 +24,7 @@ if(firebase.apps.length === 0){
   firebase.initializeApp(firebaseConfig)
 }
 
+//YellowBox.ignoreWarnings('message that is to be ignored')  this line of code is to ignore the warning that appears there
 
 import LandingScreen from './components/auth/Landing'
 import RegisterScreen from './components/auth/Register'
@@ -32,6 +33,7 @@ import RightScreen from './components/auth/Register'
 import mainScreen from './components/main'
 import cameraScreen from './components/main/camera'
 import saveScreen from './components/main/save'
+
 
 const store = createStore(rootReducers, applyMiddleware(thunk))
 

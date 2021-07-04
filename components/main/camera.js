@@ -92,6 +92,17 @@ const styles = StyleSheet.create({
   fixesRatio : {
       flex: 1,
       aspectRatio: 1
-  }
+  },
+  buttonContainer: {
+    marginTop:10,
+    height:45,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom:20,
+    width:250,
+    borderRadius:30,
+    backgroundColor: "green",
+  },
 }); 
 
