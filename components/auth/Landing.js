@@ -2,30 +2,35 @@ import { NavigationContainer } from '@react-navigation/native';
 import React from 'react'
 import { View, Button, Text, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native'
 
-
+const img = { uri: "https://images.unsplash.com/photo-1557683325-3ba8f0df79de?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1700&q=80" };
 
 export default function Landing({navigation}) {
     return (
+        <ImageBackground style={styles.image} source={img}>
         <View style = {styles.container}>
-            <ImageBackground style={styles.image} source={}>
+            <Text style = {styles.text}>Welcome</Text>
             <TouchableOpacity style={styles.buttonContainer1} onPress = {() => navigation.navigate("Register")}>
-                <Text> Register</Text>
+                <Text style={styles.text}> Register</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.buttonContainer2}  onPress = {() => navigation.navigate("Login")}>
-                <Text> Login</Text>
+                <Text style={styles.text}> Login</Text>
             </TouchableOpacity>
-            </ImageBackground>
+            
         </View>
+        </ImageBackground>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        //backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
         padding: 30,
+        //backgroundGradient: "vertical",
+        //backgroundGradientTop: "#333333",
+        //backgroundGradientBottom: "#666666"
     },
     input: {
         height: 50,
@@ -62,5 +67,10 @@ const styles = StyleSheet.create({
         resizeMode: "cover",
         justifyContent: "center"
     },
+    text: {
+        fontSize: 20,
+        fontWeight: "bold",
+        color: 'black'
+    }
     
 })

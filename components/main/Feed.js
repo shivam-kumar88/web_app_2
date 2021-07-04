@@ -1,8 +1,11 @@
 import React from 'react'
-import { Text, View, StyleSheet } from 'react-native'
+import { Text, View, StyleSheet, ImageBackground } from 'react-native'
+
+const img = {uri : "https://images.unsplash.com/photo-1614851099175-e5b30eb6f696?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=750&q=80"};
 
 export default function Feed() {
     return (
+        <ImageBackground style = {styles.image} source = {img}>
         <View style = {styles.body}>
             <View style={styles.bodyContent}>
                 <Text style={styles.info}>the feed page is currently in development </Text>
@@ -10,7 +13,7 @@ export default function Feed() {
                 <Text style = {styles.description}> this app is still in progress once i am done with rest of three tabs i will work on this feed tab.</Text>
             </View>
         </View>
-        
+        </ImageBackground>
     )
 }
 
@@ -38,6 +41,11 @@ const styles = StyleSheet.create({
         fontSize:26,
         color: "red",
         alignItems: 'center',
-        marginTop:200
+        marginTop:10
+    },
+    image: {
+        flex: 1,
+        resizeMode: "cover",
+        justifyContent: "center"
     },
 })

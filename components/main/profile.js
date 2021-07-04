@@ -4,15 +4,21 @@ import {
   Text,
   View,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
+  ImageBackground
 } from 'react-native';
 
+const img = {uri: "https://images.unsplash.com/photo-1527239441953-caffd968d952?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80"}
+const coverimg = {uri: "https://images.unsplash.com/photo-1608330862934-ae84cb5631ff?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"};
 export default class Profile extends Component {
 
   render() {
     return (
+      <ImageBackground source={img} style={styles.image}>
       <View style={styles.container}>
-          <View style={styles.header}></View>
+          <View style={styles.header}>
+            <Image style ={styles.image} source = {coverimg}/>
+          </View>
           <Image style={styles.avatar} source={{uri: 'https://bootdey.com/img/Content/avatar/avatar6.png'}}/>
           <View style={styles.body}>
             <View style={styles.bodyContent}>
@@ -25,13 +31,14 @@ export default class Profile extends Component {
             </View>
         </View>
       </View>
+      </ImageBackground>
     );
   }
 }
 
 const styles = StyleSheet.create({
   header:{
-    backgroundColor: "#e6e6fa",
+    backgroundColor: "gray",
     height:200,
   },
   avatar: {
@@ -84,5 +91,10 @@ const styles = StyleSheet.create({
     width:250,
     borderRadius:30,
     backgroundColor: "#00ced1",
+  },
+  image: {
+    flex: 1,
+    resizeMode: "cover",
+    //justifyContent: "center"
   },
 });
