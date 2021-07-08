@@ -10,7 +10,7 @@ export default function Feed() {
             <View style={styles.bodyContent}>
                 <Text style={styles.info}>the feed page is currently in development </Text>
                 <Text style = {styles.name}>By shivam kumar</Text>
-                <Text style = {styles.description}> this app is still in progress once i am done with rest of three tabs i will work on this feed tab.</Text>
+                <Text style = {styles.description}> this app is  still in progress once i am done with rest of three tabs i will work on this feed tab.</Text>
             </View>
         </View>
         </ImageBackground>
