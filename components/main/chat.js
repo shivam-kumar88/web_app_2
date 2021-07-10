@@ -1,25 +1,48 @@
-import React from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import {View, Text, TextInput, StyleSheet, Button, TouchableOpacity, ImageBackground} from 'react-native'
+import { GiftedChat } from 'react-native-gifted-chat'
 
-const img = {uri: "https://images.unsplash.com/photo-1614853035846-77b0a40a6b5c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=750&q=80"};
+const img = {uri: "https://images.unsplash.com/photo-1522886595859-a3ae7588ff14?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80"};
 
 export default function chat() {
+    const [messages, setMessages] = useState([]);
+
+    useEffect(() => {
+        setMessages([
+          {
+            _id: 1,
+            text: 'Hello friend its shivam',
+            createdAt: new Date(),
+            user: {
+              _id: 2,
+              name: 'shivam',
+              avatar: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
+            },
+            
+          },
+        ])
+    }, [])
+
+    const onSend = useCallback((messages = []) => {
+        setMessages(previousMessages => GiftedChat.append(previousMessages, messages))
+    }, [])
+
     return (
-        <ImageBackground style = {styles.image} source={img}>
-        <View style = {styles.container}>
-            <TextInput style={styles.input} placeholder="Enter your message here"  />
-            <TouchableOpacity style= {styles.buttonContainer} onPress={()=> null} >
-            <Text>send</Text> 
-            </TouchableOpacity>
-        </View>
-        </ImageBackground>
+        <ImageBackground style={styles.image} source={img}>
+        <GiftedChat
+        messages={messages}
+      onSend={messages => onSend(messages)}
+      user={{
+        _id: 1,
+      }}/>
+    
+    </ImageBackground>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        //backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
         padding: 30,
