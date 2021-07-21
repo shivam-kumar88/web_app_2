@@ -57,6 +57,15 @@ export default function camera({navigation}) {
               type={type}
               ratio = {'1:1'}/>         
         </View>
+          <TouchableOpacity style={styles.buttonContainer1} onPress={() => {
+              setType(
+                type === Camera.Constants.Type.back
+                  ? Camera.Constants.Type.front
+                  : Camera.Constants.Type.back
+              );
+            }}>
+                <Text style={styles.text}> Flip</Text>
+            </TouchableOpacity>
         <Button
             style={{
                 flex: 0.1,
@@ -104,5 +113,16 @@ const styles = StyleSheet.create({
     borderRadius:30,
     backgroundColor: "green",
   },
+  buttonContainer1: {
+    marginTop:10,
+    height:45,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom:20,
+    width:60,
+    borderRadius:30,
+    backgroundColor: "#90ee90",
+},
 }); 
 

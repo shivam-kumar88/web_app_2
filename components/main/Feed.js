@@ -1,10 +1,12 @@
 import React from 'react'
+import { StatusBar } from 'react-native';
 import { Text, View, StyleSheet, ImageBackground } from 'react-native'
 
 const img = {uri : "https://images.unsplash.com/photo-1614851099175-e5b30eb6f696?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=750&q=80"};
 
 export default function Feed() {
     return (
+        //<StatusBar barStyle="dark-content"/>
         <ImageBackground style = {styles.image} source = {img}>
         <View style = {styles.body}>
             <View style={styles.bodyContent}>

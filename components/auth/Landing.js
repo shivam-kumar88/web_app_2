@@ -51,7 +51,8 @@ const styles = StyleSheet.create({
         borderRadius:30,
         backgroundColor: "#90ee90",
     },
-    buttonContainer2: {
+    buttonContainer2
+    : {
         marginTop:10,
         height:45,
         flexDirection: 'row',
