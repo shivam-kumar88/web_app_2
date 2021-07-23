@@ -81,13 +81,19 @@ export default function camera({navigation}) {
               );
             }}>
         </Button>
-        <Button 
-          title = "take picture"
-          onPress = {()=> takePicture()}/>
-        <Button title="save" onPress ={() => navigation.navigate('save', {image})}/>
-        <Button 
-          title = "gallery"
-          onPress = {()=> pickImage()}/>
+        <TouchableOpacity style = {styles.buttonContainer2} 
+          onPress = {()=> takePicture()}>
+            <Text>click</Text>
+          </TouchableOpacity>
+        <TouchableOpacity style={styles.buttonContainer3}
+        onPress ={() => navigation.navigate('save', {image})}>
+        <Text>save</Text>
+        </TouchableOpacity> 
+        <TouchableOpacity style={styles.buttonContainer4}
+        onPress = {()=> pickImage()}>
+        <Text>gallery</Text>
+        </TouchableOpacity>
+          
         {image && <Image source={{uri:image}} style = {{flex:1}}/>}
     </View>
   );
@@ -124,5 +130,38 @@ const styles = StyleSheet.create({
     borderRadius:30,
     backgroundColor: "#90ee90",
 },
+  buttonContainer2: {
+    marginTop:10,
+    height:45,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom:20,
+    width:60,
+    borderRadius:30,
+    backgroundColor: "#897ec5",
+},
+  buttonContainer3: {
+    marginTop:10,
+    height:45,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom:20,
+    width:60,
+    borderRadius:30,
+    backgroundColor: "#efd08b",
+  },
+  buttonContainer4: {
+    marginTop:10,
+    height:45,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom:20,
+    width:60,
+    borderRadius:30,
+    backgroundColor: "#9de2ff",
+  },
 }); 
 
