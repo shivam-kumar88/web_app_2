@@ -66,21 +66,7 @@ export default function camera({navigation}) {
             }}>
                 <Text style={styles.text}> Flip</Text>
             </TouchableOpacity>
-        <Button
-            style={{
-                flex: 0.1,
-                alignSelf: 'flex-end',
-                alignItems: 'center',
-              }}
-            title = "flip camera"
-            onPress={() => {
-              setType(
-                type === Camera.Constants.Type.back
-                  ? Camera.Constants.Type.front
-                  : Camera.Constants.Type.back
-              );
-            }}>
-        </Button>
+        
         <TouchableOpacity style = {styles.buttonContainer2} 
           onPress = {()=> takePicture()}>
             <Text>click</Text>
