@@ -13,7 +13,7 @@ export function fetchUser(){
             }
             else{
                 console.log("does not exist")
-                alert("does not exist")
+                
             }
         })
     })
