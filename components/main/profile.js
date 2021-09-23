@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
+  FlatList,
   Text,
   View,
   Image,
@@ -8,9 +9,11 @@ import {
   ImageBackground
 } from 'react-native';
 
-const img = {uri: "https://images.unsplash.com/photo-1527239441953-caffd968d952?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80"}
-const coverimg = {uri: "https://images.unsplash.com/photo-1608330862934-ae84cb5631ff?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"};
-export default class Profile extends Component {
+import { connect } from 'react-redux'
+
+//const img = {uri: "https://images.unsplash.com/photo-1527239441953-caffd968d952?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80"}
+//const coverimg = {uri: "https://images.unsplash.com/photo-1608330862934-ae84cb5631ff?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"};
+/*export default class Profile extends Component {
 
   render() {
     return (
@@ -34,9 +37,30 @@ export default class Profile extends Component {
       </ImageBackground>
     );
   }
+}*/
+
+function Profile(props){
+  const {currentUser, posts} = props;
+  console.log({currentUser, posts})
+  return(
+    <View style={styles.container}>
+      <Text>{currentUser}</Text>
+    </View>
+  )
 }
 
+const mapStateToProps = (store) => ({
+  currentUser: store.userState.currentUser,
+  post: store.userState.posts
+})
+
+export default connect(mapStateToProps, null)(Profile);
+
 const styles = StyleSheet.create({
+  container:{
+    flex:1,
+    margin: 50,
+  },
   header:{
     backgroundColor: "gray",
     height:200,

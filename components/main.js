@@ -22,7 +22,7 @@ const EmptyScreen = () => {
 export class main extends Component {
     componentDidMount(){
         this.props.fetchUser();
-        this.props.fetchUserpost();
+        //this.props.fetchUserpost();
     }
     render() {
         return(
