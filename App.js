@@ -11,13 +11,7 @@ import rootReducers from './redux/reducers'
 import thunk from 'redux-thunk' 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyC3Kqi8Afv1gvxXSeJlDFmhHi3TAIHEhx0",
-  authDomain: "test-app-2-2a63d.firebaseapp.com",
-  projectId: "test-app-2-2a63d",
-  storageBucket: "test-app-2-2a63d.appspot.com",
-  messagingSenderId: "534484245035",
-  appId: "1:534484245035:web:751030a6e800ece57ce86e",
-  measurementId: "G-RWN93QGL6P"
+  //app config
 };
 
 if(firebase.apps.length === 0){
